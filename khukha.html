@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-photos {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .background-photos img {
+            position: absolute;
+            width: 250px;
+            height: auto;
+            border-radius: 20px;
+            opacity: 0.6;
+        }
+/* Custom positions for background images */
+.background-photos img:nth-child(1) { top: 1%; left: 30%; }
+.background-photos img:nth-child(2) { top: 1%; left: 54%; }
+.background-photos img:nth-child(3) { top: 75%; left: 54%; }
+.background-photos img:nth-child(4) { top: 55%; left: 80%; }
+.background-photos img:nth-child(5) { top: 5%; left: 7%; }
+.background-photos img:nth-child(6) { top: 75%; left: 30%; }
+.background-photos img:nth-child(7) { top: 60%; left: 7%; }
+.background-photos img:nth-child(8) { top: 5%; left: 80%; }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: red;
+            font-size: 28px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .yes-btn {
+            background: red;
+            color: white;
+        }
+
+        .no-btn {
+            background: white;
+            color: red;
+            border: 2px solid red;
+            transition: transform 0.5s ease-in-out, top 0.5s ease-in-out, left 0.5s ease-in-out;
+        }
+
+        .gif {
+            width: 250px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            opacity: 0.8;
+            animation: floatUp 3s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-photos">
+        <img src="1.jpg" alt="Photo 1">
+        <img src="2.jpg" alt="Photo 2">
+        <img src="3.jpg" alt="Photo 3">
+        <img src="4.jpg" alt="Photo 4">
+        <img src="5.jpg" alt="Photo 5">
+        <img src="6.jpg" alt="Photo 6">
+        
+    </div>
+
+    <div class="card">
+        <h1>Khoukhti, Will you be my Valentine? 💘</h1>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjdvdXQ0ZzNvcHRobGx2ZGZlbjUya3E3NXF4cGR5YXBmZzhtMzIyaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" class="gif" alt="Cute animated illustration">
+        
+        <div class="buttons">
+            <button class="yes-btn" onclick="location.href='khukhayes.html'">Yes</button>
+            <button class="no-btn" id="no-btn">No</button>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("no-btn").addEventListener("click", function() {
+            const button = this;
+            const maxX = window.innerWidth - button.offsetWidth - 20;
+            const maxY = window.innerHeight - button.offsetHeight - 20;
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+            
+            x = Math.max(20, Math.min(x, maxX));
+            y = Math.max(20, Math.min(y, maxY));
+            
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            document.body.appendChild(heart);
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>

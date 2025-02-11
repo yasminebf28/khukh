@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Said Yes! ❤️</title>
+    <style>  
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: lightpink;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: red;
+            font-size: 28px;
+        }
+        p {
+            color: darkred;
+            font-size: 18px;
+        }
+        h3 {
+            color: darkmagenta;
+            font-size: 20px;
+        }
+        .gif {
+            width: 250px;
+            border-radius: 20px;
+        }
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            color: red;
+            font-size: 20px;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container"></div>
+    <div class="card">
+        <h1>RAAAAAARRRRRRRRR!!!!!!!!</h1>
+        <p>في كل نظرة منك، يشرق عالمي بنور الحب، فأنت نجمٌ يضيء سماء أيامي ويملأ قلبي بسحر لا ينضب</p>
+        <h3>NHHEBEKKK BARCHAAAA KHOUKHTIIII❤️</h3>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTlsNWh1ZG1pbmMwZXdkdmx4Z2lwczI1OG9zd3plZnB5NXIyNHBoaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/W3fbjOoLVKHGYHlJ4z/giphy.gif"  class="gif" alt="Cute animated illustration">
+        <h2>See you soon! 💕</h2>
+    </div>
+    
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            document.querySelector('.hearts-container').appendChild(heart);
+            
+            const size = Math.random() * 20 + 10 + 'px';
+            heart.style.fontSize = size;
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
